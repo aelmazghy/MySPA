@@ -7,7 +7,7 @@
                                </v-icon>
                                Ajouter une plateau
                            </v-card-title>
-                           <v-form @CreateSpot.prevent="CreateSpot">
+                           <v-form @submit.prevent="addSpot()">
                         <v-card-text>
 
                             <v-text-field prepend-icon="mdi-home" name="name" label="Nom" type="text" color="#e91f62" v-model="fields.name"></v-text-field>
@@ -31,6 +31,8 @@
  </template>
 <script>
 export default {
+
+
     name: "AddSpot",
     data() {
         return {
@@ -40,15 +42,13 @@ export default {
     },
 
     methods: {
-        CreateSpot() {
-            this.errors = {};
-            axios.post('/CreateSpot', this.fields).then(response => {
+
+        // creer un nouveau spot
+        addSpot() {
+            //alert("add");
+            axios.post('/api/spot', this.fields);
                 alert('Message sent!');
-            }).catch(error => {
-                if (error.response.status === 422) {
-                    this.errors = error.response.data.errors || {};
-                }
-            });
+
         },
     },
 

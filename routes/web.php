@@ -22,4 +22,3 @@ Auth::routes();
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
 Route::get('/{any}', [App\Http\Controllers\MyspaController::class, 'index'])->where('any', '.*');
-Route::post('/CreateSpot', [App\Http\Controllers\Api\AdminController::class, 'CreateSpot']);

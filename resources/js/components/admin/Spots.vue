@@ -4,7 +4,25 @@
 
 <script>
 export default {
-    name: "Spots"
+    name: "Spots",
+    mounted() {
+        console.log('Component mounted.')
+    },
+    data(){
+
+    },
+    methods:{
+        getSpots: function() {
+            axios.get('/spots').then(function(response){
+                this.rows = response.data;
+            }.bind(this));
+        }
+    },
+    created: function(){
+        this.getSpots()
+    }
+
+
 }
 </script>
 

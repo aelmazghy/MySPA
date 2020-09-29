@@ -7,37 +7,37 @@
             </v-icon>
             Ajouter un jury
         </v-card-title>
-        <v-form>
+        <v-form @submit.prevent="addJudge()">
             <v-card-text>
 
-                <v-text-field prepend-icon="mdi-account" name="name" label="Nom" type="text" color="#e91f62"></v-text-field>
-                <span class="invalid-feedback" role="alert">
-                                        <strong></strong>
-                                    </span>
-                <v-text-field id="last" prepend-icon="mdi-tooltip-account" name="last" label="Prénom" type="text" color="#e91f62"></v-text-field>
-                <span class="invalid-feedback" role="alert">
-                                        <strong></strong>
-                                    </span>
+                <v-text-field prepend-icon="mdi-account" name="name" label="Nom" type="text" color="#e91f62" v-model="fields.name"></v-text-field>
+                <span v-if="errors && errors.name" class="invalid-feedback" role="alert">
+                <strong>{{ errors.name[0] }}</strong>
+                </span>
+                <v-text-field id="last" prepend-icon="mdi-tooltip-account" name="last" label="Prénom" type="text" color="#e91f62" v-model="fields.last"></v-text-field>
+                <span v-if="errors && errors.last" class="invalid-feedback" role="alert">
+                <strong>{{ errors.last[0] }}</strong>
+                </span>
 
                 <v-select
-                    id="spot" prepend-icon="mdi-map-marker" name="spot" label="Plateau" type="text" color="#e91f62"
-                    v-model="select"
-                    :items="items"
-                    :error-messages="errors"
+                    id="spot" prepend-icon="mdi-map-marker" name="spot_id" label="Plateau" type="text" color="#e91f62"
+                    v-model="fields.spot_id"
                     data-vv-name="select"
+                    :options="AllSpots"
+                    :items="AllSpots"
                     required
-                ></v-select>
-                <span class="invalid-feedback" role="alert">
-                                        <strong></strong>
-                                    </span>
-                <v-text-field id="email" prepend-icon="mdi-email" name="email" label="Email" type="email" color="#e91f62"></v-text-field>
-                <span class="invalid-feedback" role="alert">
-                                        <strong></strong>
-                                    </span>
-                <v-text-field id="password" prepend-icon="mdi-key" name="password" label="Mot de passe" type="text" color="#e91f62"></v-text-field>
-                <span class="invalid-feedback" role="alert">
-                                        <strong></strong>
-                                    </span>
+                 ></v-select>
+                <span v-if="errors && errors.spot_id" class="invalid-feedback" role="alert">
+                <strong>{{ errors.spot_id[0] }}</strong>
+                </span>
+                <v-text-field id="email" prepend-icon="mdi-email" name="email" label="Email" type="email" color="#e91f62" v-model="fields.email"></v-text-field>
+                <span v-if="errors && errors.email" class="invalid-feedback" role="alert">
+                <strong>{{ errors.email[0] }}</strong>
+                </span>
+                <v-text-field id="password" prepend-icon="mdi-key" name="password" label="Mot de passe" type="text" color="#e91f62" v-model="fields.password"></v-text-field>
+                <span v-if="errors && errors.password" class="invalid-feedback" role="alert">
+                <strong>{{ errors.password[0] }}</strong>
+                </span>
 
 
             </v-card-text>
@@ -53,17 +53,27 @@
 <script>
 export default {
     name: "AddJudges",
-    data: () => ({
-        select: null,
-        errors: null,
-        items: [
-            'Item 1',
-            'Item 2',
-            'Item 3',
-            'Item 4',
-        ],
-        checkbox: null,
-    }),
+    data() {
+        return {
+            fields: {},
+            errors: {},
+            AllSpots: [
+                'Item 1',
+                'Item 2',
+                'Item 3',
+                'Item 4',
+            ],
+        }
+    },
+    methods: {
+        // creer un nouveau jury
+        addJudge() {
+            //alert("add");
+            axios.post('/api/judge', this.fields);
+            alert('Message sent!');
+
+        },
+    },
 }
 </script>
 

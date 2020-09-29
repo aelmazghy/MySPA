@@ -2129,11 +2129,18 @@ __webpack_require__.r(__webpack_exports__);
   name: "AddJudges",
   data: function data() {
     return {
-      select: null,
-      errors: null,
-      items: ['Item 1', 'Item 2', 'Item 3', 'Item 4'],
-      checkbox: null
+      fields: {},
+      errors: {},
+      AllSpots: ['Item 1', 'Item 2', 'Item 3', 'Item 4']
     };
+  },
+  methods: {
+    // creer un nouveau jury
+    addJudge: function addJudge() {
+      //alert("add");
+      axios.post('/api/judge', this.fields);
+      alert('Message sent!');
+    }
   }
 });
 
@@ -2188,17 +2195,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    CreateSpot: function CreateSpot() {
-      var _this = this;
-
-      this.errors = {};
-      axios.post('/CreateSpot', this.fields).then(function (response) {
-        alert('Message sent!');
-      })["catch"](function (error) {
-        if (error.response.status === 422) {
-          _this.errors = error.response.data.errors || {};
-        }
-      });
+    // creer un nouveau spot
+    addSpot: function addSpot() {
+      //alert("add");
+      axios.post('/api/spot', this.fields);
+      alert('Message sent!');
     }
   }
 });
@@ -2723,7 +2724,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Spots"
+  name: "Spots",
+  mounted: function mounted() {
+    console.log('Component mounted.');
+  },
+  data: function data() {},
+  methods: {
+    getSpots: function getSpots() {
+      axios.get('/spots').then(function (response) {
+        this.rows = response.data;
+      }.bind(this));
+    }
+  },
+  created: function created() {
+    this.getSpots();
+  }
 });
 
 /***/ }),
@@ -2737,6 +2752,56 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -39290,6 +39355,14 @@ var render = function() {
       _vm._v(" "),
       _c(
         "v-form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.addJudge()
+            }
+          }
+        },
         [
           _c(
             "v-card-text",
@@ -39301,14 +39374,26 @@ var render = function() {
                   label: "Nom",
                   type: "text",
                   color: "#e91f62"
+                },
+                model: {
+                  value: _vm.fields.name,
+                  callback: function($$v) {
+                    _vm.$set(_vm.fields, "name", $$v)
+                  },
+                  expression: "fields.name"
                 }
               }),
               _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "invalid-feedback", attrs: { role: "alert" } },
-                [_c("strong")]
-              ),
+              _vm.errors && _vm.errors.name
+                ? _c(
+                    "span",
+                    {
+                      staticClass: "invalid-feedback",
+                      attrs: { role: "alert" }
+                    },
+                    [_c("strong", [_vm._v(_vm._s(_vm.errors.name[0]))])]
+                  )
+                : _vm._e(),
               _vm._v(" "),
               _c("v-text-field", {
                 attrs: {
@@ -39318,42 +39403,59 @@ var render = function() {
                   label: "Prénom",
                   type: "text",
                   color: "#e91f62"
+                },
+                model: {
+                  value: _vm.fields.last,
+                  callback: function($$v) {
+                    _vm.$set(_vm.fields, "last", $$v)
+                  },
+                  expression: "fields.last"
                 }
               }),
               _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "invalid-feedback", attrs: { role: "alert" } },
-                [_c("strong")]
-              ),
+              _vm.errors && _vm.errors.last
+                ? _c(
+                    "span",
+                    {
+                      staticClass: "invalid-feedback",
+                      attrs: { role: "alert" }
+                    },
+                    [_c("strong", [_vm._v(_vm._s(_vm.errors.last[0]))])]
+                  )
+                : _vm._e(),
               _vm._v(" "),
               _c("v-select", {
                 attrs: {
                   id: "spot",
                   "prepend-icon": "mdi-map-marker",
-                  name: "spot",
+                  name: "spot_id",
                   label: "Plateau",
                   type: "text",
                   color: "#e91f62",
-                  items: _vm.items,
-                  "error-messages": _vm.errors,
                   "data-vv-name": "select",
+                  options: _vm.AllSpots,
+                  items: _vm.AllSpots,
                   required: ""
                 },
                 model: {
-                  value: _vm.select,
+                  value: _vm.fields.spot_id,
                   callback: function($$v) {
-                    _vm.select = $$v
+                    _vm.$set(_vm.fields, "spot_id", $$v)
                   },
-                  expression: "select"
+                  expression: "fields.spot_id"
                 }
               }),
               _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "invalid-feedback", attrs: { role: "alert" } },
-                [_c("strong")]
-              ),
+              _vm.errors && _vm.errors.spot_id
+                ? _c(
+                    "span",
+                    {
+                      staticClass: "invalid-feedback",
+                      attrs: { role: "alert" }
+                    },
+                    [_c("strong", [_vm._v(_vm._s(_vm.errors.spot_id[0]))])]
+                  )
+                : _vm._e(),
               _vm._v(" "),
               _c("v-text-field", {
                 attrs: {
@@ -39363,14 +39465,26 @@ var render = function() {
                   label: "Email",
                   type: "email",
                   color: "#e91f62"
+                },
+                model: {
+                  value: _vm.fields.email,
+                  callback: function($$v) {
+                    _vm.$set(_vm.fields, "email", $$v)
+                  },
+                  expression: "fields.email"
                 }
               }),
               _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "invalid-feedback", attrs: { role: "alert" } },
-                [_c("strong")]
-              ),
+              _vm.errors && _vm.errors.email
+                ? _c(
+                    "span",
+                    {
+                      staticClass: "invalid-feedback",
+                      attrs: { role: "alert" }
+                    },
+                    [_c("strong", [_vm._v(_vm._s(_vm.errors.email[0]))])]
+                  )
+                : _vm._e(),
               _vm._v(" "),
               _c("v-text-field", {
                 attrs: {
@@ -39380,14 +39494,26 @@ var render = function() {
                   label: "Mot de passe",
                   type: "text",
                   color: "#e91f62"
+                },
+                model: {
+                  value: _vm.fields.password,
+                  callback: function($$v) {
+                    _vm.$set(_vm.fields, "password", $$v)
+                  },
+                  expression: "fields.password"
                 }
               }),
               _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "invalid-feedback", attrs: { role: "alert" } },
-                [_c("strong")]
-              )
+              _vm.errors && _vm.errors.password
+                ? _c(
+                    "span",
+                    {
+                      staticClass: "invalid-feedback",
+                      attrs: { role: "alert" }
+                    },
+                    [_c("strong", [_vm._v(_vm._s(_vm.errors.password[0]))])]
+                  )
+                : _vm._e()
             ],
             1
           ),
@@ -39459,9 +39585,9 @@ var render = function() {
         "v-form",
         {
           on: {
-            CreateSpot: function($event) {
+            submit: function($event) {
               $event.preventDefault()
-              return _vm.CreateSpot($event)
+              return _vm.addSpot()
             }
           }
         },
@@ -40345,7 +40471,77 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("All Teams")])
+  return _c(
+    "v-card",
+    { staticClass: "mx-auto", attrs: { outlined: "" } },
+    [
+      _c(
+        "v-list-item",
+        { attrs: { "three-line": "" } },
+        [
+          _c(
+            "v-list-item-content",
+            [
+              _c("v-list-item-title", { staticClass: "headline mb-1" }, [
+                _vm._v("\n                Team 1\n            ")
+              ]),
+              _vm._v(" "),
+              _c("v-list-item-subtitle", [
+                _vm._v("Projet: Greyhound divisely hello coldly fonwderfully")
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-list-item-action-text",
+            { attrs: { tile: "", size: "80", color: "grey" } },
+            [
+              _c("div", { staticClass: "overline mb-4" }, [
+                _vm._v("\n            Plateau 3 - Quai Alpha\n        ")
+              ])
+            ]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-card-actions",
+        [
+          _c(
+            "v-btn",
+            {
+              staticClass: "mx-2",
+              attrs: { fab: "", dark: "", small: "", color: "cyan" }
+            },
+            [
+              _c("v-icon", { attrs: { dark: "" } }, [
+                _vm._v("\n                mdi-pencil\n            ")
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-btn",
+            {
+              staticClass: "mx-2",
+              attrs: { fab: "", dark: "", small: "", color: "pink" }
+            },
+            [
+              _c("v-icon", { attrs: { dark: "" } }, [
+                _vm._v("\n                mdi-delete\n            ")
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -20,6 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::post('/register', 'Api\AuthController@register');
 Route::post('/login', 'Api\AuthController@login');
-Route::get('/dashboard', 'Api\AdminController@index');
+
+//Route::resource('spot', 'SpotsController');
+Route::post('/spot', [\App\Http\Controllers\Api\SpotsController::class, 'storeSpot']);
+Route::post('/judge', [\App\Http\Controllers\Api\JudgesController::class, 'storeJudge']);
 
 
