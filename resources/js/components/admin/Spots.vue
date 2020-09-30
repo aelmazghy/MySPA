@@ -3,7 +3,6 @@
     <v-card
         v-for="Spot in Spots"
         class="mx-auto mb-4"
-        outlined
     >
         <v-list-item three-line>
 
@@ -15,12 +14,10 @@
             </v-list-item-content>
 
             <v-list-item-action-text
-                tile
-                size="80"
-                color="grey"
+                color="green"
             >
                 <div class="overline mb-4">
-                    Plateau 3 - Quai Alpha
+                    {{Spot.id}}
                 </div>
             </v-list-item-action-text>
         </v-list-item>

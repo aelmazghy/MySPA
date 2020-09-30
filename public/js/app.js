@@ -2050,7 +2050,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "welcome",
   props: {
@@ -2319,6 +2318,15 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2869,9 +2877,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Spots",
   data: function data() {
@@ -2929,10 +2934,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Teams",
   data: function data() {
     return {
+      avatar: 'https://www.flaticon.com/svg/static/icons/svg/847/847969.svg',
       Teams: []
     };
   },
@@ -7398,7 +7418,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#keep .v-navigation-drawer__border {\n    display: none\n}\n#keep{\n    width: 100%;\n}\n", ""]);
+exports.push([module.i, "\n.title{color:white;}\n#keep .v-navigation-drawer__border {\n    display: none\n}\n#keep{\n    width: 100%;\n}\n.fade-enter-active, .fade-leave-active {\n    transition-property: opacity;\n    transition-duration: .25s;\n}\n.fade-enter-active {\n    transition-delay: .25s;\n}\n.fade-enter, .fade-leave-active {\n    opacity: 0\n}\n\n", ""]);
 
 // exports
 
@@ -39440,14 +39460,7 @@ var render = function() {
               _c(
                 "v-row",
                 { attrs: { justify: "center", align: "center" } },
-                [
-                  _c(
-                    "transition",
-                    { attrs: { name: "page", mode: "out-in" } },
-                    [_c("router-view")],
-                    1
-                  )
-                ],
+                [_c("router-view")],
                 1
               )
             ],
@@ -40227,7 +40240,32 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("router-view")
+      _c(
+        "v-container",
+        { staticClass: "px-4 py-0 fill-height", attrs: { fluid: "" } },
+        [
+          _c(
+            "v-row",
+            { staticClass: "fill-height" },
+            [
+              _c(
+                "v-col",
+                [
+                  _c(
+                    "transition",
+                    { attrs: { name: "fade" } },
+                    [_c("router-view")],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
     ],
     1
   )
@@ -40259,7 +40297,7 @@ var render = function() {
     _vm._l(_vm.Judges, function(Judge) {
       return _c(
         "v-card",
-        { staticClass: "mx-auto mb-4", attrs: { outlined: "" } },
+        { staticClass: "mx-auto mb-4" },
         [
           _c(
             "v-list-item",
@@ -40725,7 +40763,7 @@ var render = function() {
     _vm._l(_vm.Spots, function(Spot) {
       return _c(
         "v-card",
-        { staticClass: "mx-auto mb-4", attrs: { outlined: "" } },
+        { staticClass: "mx-auto mb-4" },
         [
           _c(
             "v-list-item",
@@ -40747,17 +40785,13 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c(
-                "v-list-item-action-text",
-                { attrs: { tile: "", size: "80", color: "grey" } },
-                [
-                  _c("div", { staticClass: "overline mb-4" }, [
-                    _vm._v(
-                      "\n                Plateau 3 - Quai Alpha\n            "
-                    )
-                  ])
-                ]
-              )
+              _c("v-list-item-action-text", { attrs: { color: "green" } }, [
+                _c("div", { staticClass: "overline mb-4" }, [
+                  _vm._v(
+                    "\n                " + _vm._s(Spot.id) + "\n            "
+                  )
+                ])
+              ])
             ],
             1
           ),
@@ -40826,55 +40860,100 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [
-      _c(
+    { staticClass: "col col-12" },
+    _vm._l(_vm.Teams, function(Team) {
+      return _c(
         "v-card",
-        { staticClass: "result-card elevation-4" },
+        {
+          key: Team.id,
+          staticClass: "mb-5 mr-2 col-md-6 float-left",
+          attrs: { tag: "section" }
+        },
         [
-          _c(
-            "v-card-text",
-            { staticClass: "result-card__content" },
-            [
-              _c(
-                "v-avatar",
-                {
-                  staticClass: "result-card__avatar",
-                  attrs: { size: 64, color: "teal" }
-                },
-                [_vm._t("icon")],
-                2
-              ),
-              _vm._v(" "),
-              _vm._t("default")
-            ],
-            2
-          ),
+          _c("v-card-title", [
+            _c(
+              "h5",
+              {
+                staticClass:
+                  "subheading font-weight-medium text-uppercase d-flex"
+              },
+              [
+                _c("img", {
+                  staticClass: "mr-2",
+                  attrs: {
+                    alt: Team.name,
+                    src: _vm.avatar,
+                    width: "30",
+                    height: "30"
+                  }
+                }),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(Team.name))])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("v-divider"),
           _vm._v(" "),
           _c(
-            "v-card-actions",
-            { staticClass: "result-card__actions" },
+            "v-card-text",
             [
               _c(
-                "v-btn",
-                { staticClass: "actions__view", attrs: { flat: "" } },
-                [_vm._v("\n                View\n            ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "v-tooltip",
-                { attrs: { bottom: "" } },
+                "v-list",
+                { attrs: { "two-line": "" } },
                 [
                   _c(
-                    "v-btn",
-                    {
-                      staticClass: "actions__open-in-new",
-                      attrs: { slot: "activator", flat: "", icon: "" },
-                      slot: "activator"
-                    },
-                    [_c("v-icon", [_vm._v("open_in_new")])],
+                    "v-list-item",
+                    [
+                      _c("v-list-item-content", [
+                        _c("small", { staticClass: "grey--text" }, [
+                          _vm._v(_vm._s(Team.spot_id))
+                        ]),
+                        _vm._v(
+                          " " +
+                            _vm._s(Team.project) +
+                            "\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-item-action",
+                        [
+                          _c(
+                            "v-btn",
+                            {
+                              staticClass: "mx-2",
+                              attrs: {
+                                fab: "",
+                                dark: "",
+                                small: "",
+                                color: "cyan"
+                              }
+                            },
+                            [_c("v-icon", [_vm._v("mdi-pencil")])],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              staticClass: "mx-2",
+                              attrs: {
+                                fab: "",
+                                dark: "",
+                                small: "",
+                                color: "pink"
+                              }
+                            },
+                            [_c("v-icon", [_vm._v("mdi-delete")])],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
                     1
-                  ),
-                  _vm._v("\n                Open in New\n            ")
+                  )
                 ],
                 1
               )
@@ -40884,7 +40963,7 @@ var render = function() {
         ],
         1
       )
-    ],
+    }),
     1
   )
 }

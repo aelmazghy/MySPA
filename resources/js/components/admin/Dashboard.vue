@@ -97,7 +97,16 @@
 
         </v-navigation-drawer>
 
-        <router-view></router-view>
+        <v-container class="px-4 py-0 fill-height" fluid>
+            <v-row class="fill-height">
+                <v-col>
+                    <transition name="fade">
+                        <router-view></router-view>
+                    </transition>
+                </v-col>
+            </v-row>
+        </v-container>
+
 
     </v-app>
 </template>
@@ -139,10 +148,24 @@ export default {
 </script>
 
 <style>
+.title{color:white;}
 #keep .v-navigation-drawer__border {
     display: none
 }
 #keep{
     width: 100%;
 }
+.fade-enter-active, .fade-leave-active {
+    transition-property: opacity;
+    transition-duration: .25s;
+}
+
+.fade-enter-active {
+    transition-delay: .25s;
+}
+
+.fade-enter, .fade-leave-active {
+    opacity: 0
+}
+
 </style>

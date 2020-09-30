@@ -1,29 +1,43 @@
 <template>
-    <div>
-        <v-card class="result-card elevation-4">
-            <v-card-text class="result-card__content">
-                <!-- Card avatar -->
-                <v-avatar :size="64" class="result-card__avatar" color="teal">
-                    <slot name="icon" />
-                </v-avatar>
+    <div class="col col-12">
+             <v-card tag="section"
+                    v-for="Team in Teams"
+                    :key="Team.id"
+             class="mb-5 mr-2 col-md-6 float-left">
+                <v-card-title>
+                    <h5 class="subheading font-weight-medium text-uppercase d-flex">
+                        <img :alt="Team.name" :src="avatar" width="30" height="30" class="mr-2"> <span>{{ Team.name }}</span>
+                    </h5>
+                </v-card-title>
+                <v-divider/>
+                <v-card-text>
+                    <v-list two-line>
+                        <v-list-item>
+                            <v-list-item-content>
+                                <small class="grey--text">{{ Team.spot_id }}</small> {{ Team.project }}
+                            </v-list-item-content>
+                            <v-list-item-action>
+                                <v-btn class="mx-2"
+                                       fab
+                                       dark
+                                       small
+                                       color="cyan">
+                                    <v-icon>mdi-pencil</v-icon>
+                                </v-btn>
+                                <v-btn
+                                       class="mx-2"
+                                       fab
+                                       dark
+                                       small
+                                       color="pink">
+                                    <v-icon>mdi-delete</v-icon>
+                                </v-btn>
+                            </v-list-item-action>
+                        </v-list-item>
+                    </v-list>
+                </v-card-text>
+            </v-card>
 
-                <!-- Card content -->
-                <slot name="default" />
-            </v-card-text>
-
-            <!-- Card actions -->
-            <v-card-actions class="result-card__actions">
-                <v-btn class="actions__view" flat>
-                    View
-                </v-btn>
-                <v-tooltip bottom>
-                    <v-btn slot="activator" class="actions__open-in-new" flat icon>
-                        <v-icon>open_in_new</v-icon>
-                    </v-btn>
-                    Open in New
-                </v-tooltip>
-            </v-card-actions>
-        </v-card>
     </div>
 </template>
 
@@ -33,6 +47,7 @@ export default {
 
     data(){
         return {
+            avatar: 'https://www.flaticon.com/svg/static/icons/svg/847/847969.svg',
             Teams: []
         }
     },

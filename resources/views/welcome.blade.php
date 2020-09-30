@@ -23,6 +23,7 @@
         </style>
     </head>
     <body>
+
       <div id="app">
           <welcome></welcome>
       </div>

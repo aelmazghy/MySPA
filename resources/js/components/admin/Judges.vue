@@ -3,7 +3,7 @@
         <v-card
             v-for="Judge in Judges"
             class="mx-auto mb-4"
-            outlined
+
         >
             <v-list-item three-line>
 
