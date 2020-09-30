@@ -22,7 +22,14 @@ Route::post('/register', 'Api\AuthController@register');
 Route::post('/login', 'Api\AuthController@login');
 
 //Route::resource('spot', 'SpotsController');
-Route::post('/spot', [\App\Http\Controllers\Api\SpotsController::class, 'storeSpot']);
 Route::post('/judge', [\App\Http\Controllers\Api\JudgesController::class, 'storeJudge']);
+Route::post('/spot', [\App\Http\Controllers\Api\SpotsController::class, 'storeSpot']);
+Route::post('/team', [\App\Http\Controllers\Api\TeamsController::class, 'storeTeam']);
+
+
+// get data
+Route::get('/judge/get', [\App\Http\Controllers\Api\JudgesController::class, 'index']);
+Route::get('/spot/get', [\App\Http\Controllers\Api\SpotsController::class, 'index']);
+Route::get('/team/get', [\App\Http\Controllers\Api\TeamsController::class, 'index']);
 
 

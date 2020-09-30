@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Judge;
+use App\Models\Spot;
 use Illuminate\Http\Request;
 
 class JudgesController extends Controller
@@ -15,7 +16,7 @@ class JudgesController extends Controller
      */
     public function index()
     {
-        //
+        return Judge::all();
     }
 
     /**

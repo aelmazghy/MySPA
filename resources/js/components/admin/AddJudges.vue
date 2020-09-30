@@ -20,14 +20,19 @@
                 </span>
 
                 <v-select
-                    id="spot" prepend-icon="mdi-map-marker" name="spot_id" label="Plateau" type="text" color="#e91f62"
                     v-model="fields.spot_id"
-                    data-vv-name="select"
-                    :options="AllSpots"
-                    :items="AllSpots"
-                    required
-                 ></v-select>
-                <span v-if="errors && errors.spot_id" class="invalid-feedback" role="alert">
+                    :items="Spots"
+                    item-text="name"
+                    item-value="id"
+                    id="spot_id"
+                    prepend-icon="mdi-map-marker"
+                    name="spot_id"
+                    type="text"
+                    color="#e91f62"
+                    label="Plateau"
+                >
+                </v-select>
+                 <span v-if="errors && errors.spot_id" class="invalid-feedback" role="alert">
                 <strong>{{ errors.spot_id[0] }}</strong>
                 </span>
                 <v-text-field id="email" prepend-icon="mdi-email" name="email" label="Email" type="email" color="#e91f62" v-model="fields.email"></v-text-field>
@@ -57,14 +62,15 @@ export default {
         return {
             fields: {},
             errors: {},
-            AllSpots: [
-                'Item 1',
-                'Item 2',
-                'Item 3',
-                'Item 4',
-            ],
+            Spots: []
         }
     },
+
+    created() {
+        axios.get('/api/spot/get')
+            .then(response => this.Spots =  response.data);
+    },
+
     methods: {
         // creer un nouveau jury
         addJudge() {

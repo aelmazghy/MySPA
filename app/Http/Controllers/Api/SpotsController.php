@@ -19,22 +19,7 @@ class SpotsController extends Controller
      */
     public function index()
     {
-
-    }
-
-    /**
-     * get spots.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param Spot  $Spot
-     * @return \Illuminate\Http\Response
-     */
-    public function getSpots()
-    {
-
-        $Spot = Spot::get();
-        return response()->json($Spot);
-
+        return Spot::all();
     }
     /**
      * Store a newly created resource in storage.

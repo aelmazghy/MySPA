@@ -9,8 +9,9 @@
                     justify="center"
                     align="center"
                 >
-
+                    <transition name="page" mode="out-in">
                     <router-view></router-view>
+                    </transition>
                 </v-row>
             </v-container>
         </v-main>

@@ -9,32 +9,36 @@
             Ajouter une équipe
         </v-card-title>
 
-        <v-form>
+        <v-form @submit.prevent="addTeam()">
             <v-card-text>
 
-                <v-text-field prepend-icon="mdi-account" name="name" label="Nom" type="text" color="#e91f62"></v-text-field>
-                <span class="invalid-feedback" role="alert">
-                                        <strong></strong>
+                <v-text-field prepend-icon="mdi-account" name="name" label="Nom" type="text" color="#e91f62" v-model="fields.name"></v-text-field>
+                <span v-if="errors && errors.name" class="invalid-feedback" role="alert">
+                                        <strong>{{ errors.name[0] }}</strong>
                                     </span>
-                <v-text-field id="last" prepend-icon="mdi-tooltip-account" name="last" label="Prénom" type="text" color="#e91f62"></v-text-field>
-                <span class="invalid-feedback" role="alert">
-                                        <strong></strong>
+                <v-text-field id="last" prepend-icon="mdi-tooltip-account" name="last" label="Prénom" type="text" color="#e91f62" v-model="fields.last"></v-text-field>
+                <span v-if="errors && errors.last" class="invalid-feedback" role="alert">
+                                        <strong>{{ errors.last[0] }}</strong>
                                     </span>
 
                 <v-select
-                    id="spot" prepend-icon="mdi-map-marker" name="spot" label="Plateau" type="text" color="#e91f62"
-                    v-model="select"
-                    :items="items"
-                    :error-messages="errors"
-                    data-vv-name="select"
-                    required
+                    v-model="fields.spot_id"
+                    :items="Spots"
+                    item-text="name"
+                    item-value="id"
+                    id="spot_id"
+                    prepend-icon="mdi-map-marker"
+                    name="spot_id"
+                    type="text"
+                    color="#e91f62"
+                    label="Plateau"
                 ></v-select>
-                <span class="invalid-feedback" role="alert">
-                                        <strong></strong>
+                <span v-if="errors && errors.spot_id" class="invalid-feedback" role="alert">
+                                        <strong>{{ errors.spot_id[0] }}</strong>
                                     </span>
-                <v-text-field id="project" prepend-icon="mdi-briefcase" name="project" label="Projet" type="text" color="#e91f62"></v-text-field>
-                <span class="invalid-feedback" role="alert">
-                                        <strong></strong>
+                <v-text-field id="project" prepend-icon="mdi-briefcase" name="project" label="Projet" type="text" color="#e91f62" v-model="fields.project"></v-text-field>
+                <span v-if="errors && errors.project" class="invalid-feedback" role="alert">
+                                        <strong>{{ errors.project[0] }}</strong>
                                     </span>
 
 
@@ -51,17 +55,27 @@
 <script>
 export default {
 name: "AddTeam",
-    data: () => ({
-        select: null,
-        errors: null,
-        items: [
-            'Item 1',
-            'Item 2',
-            'Item 3',
-            'Item 4',
-        ],
-        checkbox: null,
-    }),
+    data() {
+        return {
+            fields: {},
+            errors: {},
+            Spots: []
+        }
+    },
+    created() {
+        axios.get('/api/spot/get')
+            .then(response => this.Spots =  response.data);
+    },
+    methods: {
+
+        // creer un nouveau spot
+        addTeam() {
+            //alert("add");
+            axios.post('/api/team', this.fields);
+            alert('Message sent!');
+
+        },
+    },
 }
 </script>
 
