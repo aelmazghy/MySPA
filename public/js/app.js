@@ -2009,13 +2009,60 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HomePage",
+  data: function data() {
+    return {};
+  },
   methods: {
     goTolink: function goTolink(linkName) {
+      var _this = this;
+
       this.$root.$router.push({
         name: linkName
-      })["catch"](function () {}); // this.$router.push("/admin").catch(()=>{});
+      }).then(function (response) {
+        _this.$router.push(linkName);
+      })["catch"](function () {
+        location.reload();
+      }); // this.$router.push("/admin").catch(()=>{});
     }
   }
 });
@@ -2877,6 +2924,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Spots",
   data: function data() {
@@ -2905,6 +2953,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -39291,122 +39341,209 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-main",
+    "div",
     [
       _c(
-        "v-container",
-        { staticClass: "fill-height", attrs: { fluid: "" } },
+        "v-app-bar",
+        { attrs: { app: "", "clipped-left": "", dark: "" } },
         [
+          _c("span", { staticClass: "title ml-3 mr-5" }, [
+            _vm._v("Quai Alpha "),
+            _c("span", { staticClass: "font-weight-light" }, [
+              _vm._v("Classement")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("v-spacer"),
+          _vm._v(" "),
           _c(
-            "v-row",
-            { attrs: { align: "center", justify: "center" } },
-            [
-              _c(
-                "v-col",
-                { attrs: { cols: "12" } },
-                [
-                  _c("v-img", {
-                    staticClass: "mx-auto",
-                    attrs: { "max-width": "250", src: "./images/logo-qa.svg" }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "text-center " },
-                    [
+            "v-menu",
+            {
+              attrs: { left: "", bottom: "" },
+              scopedSlots: _vm._u([
+                {
+                  key: "activator",
+                  fn: function(ref) {
+                    var on = ref.on
+                    var attrs = ref.attrs
+                    return [
                       _c(
                         "v-btn",
+                        _vm._g(
+                          _vm._b(
+                            { attrs: { icon: "" } },
+                            "v-btn",
+                            attrs,
+                            false
+                          ),
+                          on
+                        ),
+                        [_c("v-icon", [_vm._v("mdi-dots-vertical")])],
+                        1
+                      )
+                    ]
+                  }
+                }
+              ])
+            },
+            [
+              _vm._v(" "),
+              _c(
+                "v-list",
+                [
+                  _c(
+                    "v-list-item",
+                    { on: { click: function() {} } },
+                    [
+                      _c(
+                        "v-list-item-title",
                         {
-                          staticClass: "ma-2 text-lg-h4",
-                          attrs: {
-                            color: "pink",
-                            height: "128",
-                            width: "100%"
-                          },
                           on: {
                             click: function($event) {
-                              return _vm.goTolink("score")
+                              return _vm.goTolink("logout")
                             }
                           }
                         },
-                        [
-                          _vm._v(
-                            "\n                        Admin\n                    "
-                          )
-                        ]
-                      ),
+                        [_vm._v("Deconnexion")]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-main",
+        [
+          _c(
+            "v-container",
+            { staticClass: "fill-height", attrs: { fluid: "" } },
+            [
+              _c(
+                "v-row",
+                { attrs: { align: "center", justify: "center" } },
+                [
+                  _c(
+                    "v-col",
+                    { attrs: { cols: "12" } },
+                    [
+                      _c("v-img", {
+                        staticClass: "mx-auto",
+                        attrs: {
+                          "max-width": "250",
+                          src: "./images/logo-qa.svg"
+                        }
+                      }),
                       _vm._v(" "),
                       _c(
-                        "v-btn",
-                        {
-                          staticClass: "ma-2 text-lg-h4",
-                          attrs: {
-                            color: "success",
-                            height: "128",
-                            width: "100%"
-                          },
-                          on: {
-                            click: function($event) {
-                              _vm.loader = "loading2"
-                            }
-                          },
-                          scopedSlots: _vm._u([
-                            {
-                              key: "loader",
-                              fn: function() {
-                                return [_c("span", [_vm._v("Loading...")])]
-                              },
-                              proxy: true
-                            }
-                          ])
-                        },
+                        "div",
+                        { staticClass: "text-center " },
                         [
-                          _vm._v(
-                            "\n                        Jurys\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        {
-                          staticClass: "ma-2 text-lg-h4",
-                          attrs: {
-                            color: "info",
-                            height: "128",
-                            width: "100%"
-                          },
-                          on: {
-                            click: function($event) {
-                              _vm.loader = "loading4"
-                            }
-                          },
-                          scopedSlots: _vm._u([
+                          _c(
+                            "v-btn",
                             {
-                              key: "loader",
-                              fn: function() {
-                                return [
-                                  _c(
-                                    "span",
-                                    { staticClass: "custom-loader" },
-                                    [
-                                      _c("v-icon", { attrs: { light: "" } }, [
-                                        _vm._v("cached")
-                                      ])
-                                    ],
-                                    1
-                                  )
-                                ]
+                              staticClass: "ma-2 text-lg-h4",
+                              attrs: {
+                                color: "pink",
+                                height: "128",
+                                width: "100%"
                               },
-                              proxy: true
-                            }
-                          ])
-                        },
-                        [
-                          _vm._v(
-                            "\n                        Score\n                        "
+                              on: {
+                                click: function($event) {
+                                  return _vm.goTolink("dashboard")
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                            Admin\n                        "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              staticClass: "ma-2 text-lg-h4",
+                              attrs: {
+                                color: "success",
+                                height: "128",
+                                width: "100%"
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.loader = "loading2"
+                                }
+                              },
+                              scopedSlots: _vm._u([
+                                {
+                                  key: "loader",
+                                  fn: function() {
+                                    return [_c("span", [_vm._v("Loading...")])]
+                                  },
+                                  proxy: true
+                                }
+                              ])
+                            },
+                            [
+                              _vm._v(
+                                "\n                            Jurys\n                            "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              staticClass: "ma-2 text-lg-h4",
+                              attrs: {
+                                color: "info",
+                                height: "128",
+                                width: "100%"
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.loader = "loading4"
+                                }
+                              },
+                              scopedSlots: _vm._u([
+                                {
+                                  key: "loader",
+                                  fn: function() {
+                                    return [
+                                      _c(
+                                        "span",
+                                        { staticClass: "custom-loader" },
+                                        [
+                                          _c(
+                                            "v-icon",
+                                            { attrs: { light: "" } },
+                                            [_vm._v("cached")]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ]
+                                  },
+                                  proxy: true
+                                }
+                              ])
+                            },
+                            [
+                              _vm._v(
+                                "\n                            Score\n                            "
+                              )
+                            ]
                           )
-                        ]
+                        ],
+                        1
                       )
                     ],
                     1
@@ -39448,14 +39585,14 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-app",
-    { attrs: { id: "keep" } },
+    { staticClass: "theme--dark", attrs: { id: "keep", dark: "" } },
     [
       _c(
         "v-main",
         [
           _c(
             "v-container",
-            { staticClass: "lighten-4 fill-height", attrs: { fluid: "" } },
+            { staticClass: "darken-1 fill-height", attrs: { fluid: "" } },
             [
               _c(
                 "v-row",
@@ -39497,7 +39634,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-card",
-    { attrs: { width: "100%" } },
+    { attrs: { width: "100%", dark: "" } },
     [
       _c(
         "v-card-title",
@@ -39724,7 +39861,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-card",
-    { attrs: { width: "100%" } },
+    { attrs: { width: "100%", dark: "" } },
     [
       _c(
         "v-card-title",
@@ -39861,7 +39998,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-card",
-    { attrs: { width: "100%" } },
+    { attrs: { width: "100%", dark: "" } },
     [
       _c(
         "v-card-title",
@@ -40063,7 +40200,7 @@ var render = function() {
     [
       _c(
         "v-app-bar",
-        { attrs: { app: "", "clipped-left": "", color: "pink" } },
+        { attrs: { app: "", dark: "", "clipped-left": "" } },
         [
           _c("v-app-bar-nav-icon", {
             on: {
@@ -40136,7 +40273,7 @@ var render = function() {
       _c(
         "v-navigation-drawer",
         {
-          attrs: { app: "", clipped: "", color: "grey lighten-4" },
+          attrs: { app: "", clipped: "", dark: "" },
           model: {
             value: _vm.drawer,
             callback: function($$v) {
@@ -40148,7 +40285,7 @@ var render = function() {
         [
           _c(
             "v-list",
-            { staticClass: "grey lighten-4", attrs: { dense: "" } },
+            { attrs: { dense: "" } },
             [
               _vm._l(_vm.items, function(item, i) {
                 return [
@@ -40164,9 +40301,9 @@ var render = function() {
                               item.heading
                                 ? _c("v-subheader", [
                                     _vm._v(
-                                      "\n                            " +
+                                      "\n                               " +
                                         _vm._s(item.heading) +
-                                        "\n                        "
+                                        "\n                           "
                                     )
                                   ])
                                 : _vm._e()
@@ -40219,9 +40356,9 @@ var render = function() {
                                 { staticClass: "grey--text" },
                                 [
                                   _vm._v(
-                                    "\n                            " +
+                                    "\n                               " +
                                       _vm._s(item.text) +
-                                      "\n                        "
+                                      "\n                           "
                                   )
                                 ]
                               )
@@ -40242,14 +40379,22 @@ var render = function() {
       _vm._v(" "),
       _c(
         "v-container",
-        { staticClass: "px-4 py-0 fill-height", attrs: { fluid: "" } },
+        {
+          staticClass: "px-4 py-0 fill-height",
+          staticStyle: { "background-color": "rgb(19 19 19)" },
+          attrs: { fluid: "" }
+        },
         [
           _c(
             "v-row",
-            { staticClass: "fill-height" },
+            {
+              staticClass: "fill-height",
+              staticStyle: { "background-color": "rgb(19 19 19)" }
+            },
             [
               _c(
                 "v-col",
+                { staticStyle: { "background-color": "rgb(19 19 19)" } },
                 [
                   _c(
                     "transition",
@@ -40297,7 +40442,7 @@ var render = function() {
     _vm._l(_vm.Judges, function(Judge) {
       return _c(
         "v-card",
-        { staticClass: "mx-auto mb-4" },
+        { staticClass: "mx-auto mb-4", attrs: { dark: "" } },
         [
           _c(
             "v-list-item",
@@ -40763,7 +40908,7 @@ var render = function() {
     _vm._l(_vm.Spots, function(Spot) {
       return _c(
         "v-card",
-        { staticClass: "mx-auto mb-4" },
+        { staticClass: "mx-auto mb-4", attrs: { dark: "" } },
         [
           _c(
             "v-list-item",
@@ -40866,8 +41011,8 @@ var render = function() {
         "v-card",
         {
           key: Team.id,
-          staticClass: "mb-5 mr-2 col-md-6 float-left",
-          attrs: { tag: "section" }
+          staticClass: "mb-5",
+          attrs: { tag: "section", dark: "" }
         },
         [
           _c("v-card-title", [
@@ -40906,7 +41051,7 @@ var render = function() {
                     "v-list-item",
                     [
                       _c("v-list-item-content", [
-                        _c("small", { staticClass: "grey--text" }, [
+                        _c("small", { staticClass: "dark--text" }, [
                           _vm._v(_vm._s(Team.spot_id))
                         ]),
                         _vm._v(
@@ -40922,7 +41067,7 @@ var render = function() {
                           _c(
                             "v-btn",
                             {
-                              staticClass: "mx-2",
+                              staticClass: "mb-1",
                               attrs: {
                                 fab: "",
                                 dark: "",
@@ -40937,7 +41082,6 @@ var render = function() {
                           _c(
                             "v-btn",
                             {
-                              staticClass: "mx-2",
                               attrs: {
                                 fab: "",
                                 dark: "",

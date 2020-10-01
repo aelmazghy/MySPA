@@ -3,6 +3,7 @@
     <v-card
         v-for="Spot in Spots"
         class="mx-auto mb-4"
+        dark
     >
         <v-list-item three-line>
 

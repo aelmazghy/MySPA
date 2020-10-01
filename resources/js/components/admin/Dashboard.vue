@@ -3,8 +3,8 @@
     <v-app id="keep">
         <v-app-bar
             app
+            dark
             clipped-left
-            color="pink"
         >
             <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
             <span class="title ml-3 mr-5">Quai Alpha&nbsp;<span class="font-weight-light">Classement</span></span>
@@ -40,11 +40,11 @@
             v-model="drawer"
             app
             clipped
-            color="grey lighten-4"
-        >
+            dark
+ >
             <v-list
                 dense
-                class="grey lighten-4"
+
             >
                 <template v-for="(item, i) in items">
                     <v-row
@@ -97,9 +97,9 @@
 
         </v-navigation-drawer>
 
-        <v-container class="px-4 py-0 fill-height" fluid>
-            <v-row class="fill-height">
-                <v-col>
+        <v-container class="px-4 py-0 fill-height" fluid style="background-color: rgb(19 19 19);">
+            <v-row class="fill-height" style="background-color: rgb(19 19 19);">
+                <v-col style="background-color: rgb(19 19 19);">
                     <transition name="fade">
                         <router-view></router-view>
                     </transition>

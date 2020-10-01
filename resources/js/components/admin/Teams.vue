@@ -3,7 +3,8 @@
              <v-card tag="section"
                     v-for="Team in Teams"
                     :key="Team.id"
-             class="mb-5 mr-2 col-md-6 float-left">
+                    class="mb-5"
+                    dark>
                 <v-card-title>
                     <h5 class="subheading font-weight-medium text-uppercase d-flex">
                         <img :alt="Team.name" :src="avatar" width="30" height="30" class="mr-2"> <span>{{ Team.name }}</span>
@@ -14,10 +15,11 @@
                     <v-list two-line>
                         <v-list-item>
                             <v-list-item-content>
-                                <small class="grey--text">{{ Team.spot_id }}</small> {{ Team.project }}
+                                <small class="dark--text">{{ Team.spot_id }}</small> {{ Team.project }}
                             </v-list-item-content>
                             <v-list-item-action>
-                                <v-btn class="mx-2"
+                                <v-btn
+                                    class="mb-1"
                                        fab
                                        dark
                                        small
@@ -25,7 +27,7 @@
                                     <v-icon>mdi-pencil</v-icon>
                                 </v-btn>
                                 <v-btn
-                                       class="mx-2"
+
                                        fab
                                        dark
                                        small

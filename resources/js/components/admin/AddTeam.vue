@@ -1,5 +1,5 @@
 <template>
-    <v-card width="100%">
+    <v-card width="100%" dark>
 
         <v-card-title>
             <v-icon

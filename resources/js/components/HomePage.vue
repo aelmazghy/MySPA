@@ -1,4 +1,39 @@
 <template>
+<div>
+
+    <v-app-bar
+        app
+        clipped-left
+        dark
+    >
+        <span class="title ml-3 mr-5">Quai Alpha&nbsp;<span class="font-weight-light">Classement</span></span>
+
+
+        <v-spacer></v-spacer>
+
+        <v-menu
+            left
+            bottom
+        >
+            <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                    icon
+                    v-bind="attrs"
+                    v-on="on"
+                >
+                    <v-icon>mdi-dots-vertical</v-icon>
+                </v-btn>
+            </template>
+
+            <v-list>
+                <v-list-item
+                    @click="() => {}"
+                >
+                    <v-list-item-title @click="goTolink('logout')">Deconnexion</v-list-item-title>
+                </v-list-item>
+            </v-list>
+        </v-menu>
+    </v-app-bar>
 
     <v-main>
         <v-container
@@ -17,18 +52,21 @@
                         max-width="250"
                         src="./images/logo-qa.svg"
                     ></v-img>
+
+                    <!--start if not logged-->
+
+                    <!--end if not logged-->
+
                     <div class="text-center ">
                         <v-btn
                             class="ma-2 text-lg-h4"
                             color="pink"
                             height="128"
                             width="100%"
-                            @click="goTolink('score')"
+                            @click="goTolink('dashboard')"
                         >
                             Admin
                         </v-btn>
-
-
                         <v-btn
                             class="ma-2 text-lg-h4"
                             color="success"
@@ -63,19 +101,24 @@
             </v-row>
         </v-container>
     </v-main>
-
+</div>
 </template>
 
 <script>
 export default {
     name: "HomePage",
+    data: () => ({
+    }),
     methods: {
         goTolink(linkName) {
-            this.$root.$router.push({name: linkName}).catch(()=>{});
+            this.$root.$router.push({name: linkName}).then(response => {
+                this.$router.push(linkName)
+            }).catch(()=>{
+                location.reload();
+            });
             // this.$router.push("/admin").catch(()=>{});
 
         },
-
     }
 }
 </script>

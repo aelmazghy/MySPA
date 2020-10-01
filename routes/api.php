@@ -18,7 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 
 });
-Route::post('/register', 'Api\AuthController@register');
 Route::post('/login', 'Api\AuthController@login');
 
 //Route::resource('spot', 'SpotsController');
@@ -31,5 +30,6 @@ Route::post('/team', [\App\Http\Controllers\Api\TeamsController::class, 'storeTe
 Route::get('/judge/get', [\App\Http\Controllers\Api\JudgesController::class, 'index']);
 Route::get('/spot/get', [\App\Http\Controllers\Api\SpotsController::class, 'index']);
 Route::get('/team/get', [\App\Http\Controllers\Api\TeamsController::class, 'index']);
+
 
 

@@ -1,9 +1,9 @@
 <template>
-    <v-app id="keep">
+    <v-app id="keep" dark class="theme--dark">
         <v-main>
             <v-container
                 fluid
-                class="lighten-4 fill-height"
+                class="darken-1 fill-height"
             >
                 <v-row
                     justify="center"
