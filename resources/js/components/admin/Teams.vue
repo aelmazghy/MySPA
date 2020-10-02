@@ -23,7 +23,7 @@
                                        fab
                                        dark
                                        small
-                                       color="cyan">
+                                       color="green">
                                     <v-icon>mdi-pencil</v-icon>
                                 </v-btn>
                                 <v-btn
@@ -31,7 +31,7 @@
                                        fab
                                        dark
                                        small
-                                       color="pink">
+                                       color="danger">
                                     <v-icon>mdi-delete</v-icon>
                                 </v-btn>
                             </v-list-item-action>

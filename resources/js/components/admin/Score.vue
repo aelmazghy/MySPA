@@ -1,6 +1,6 @@
 <template>
-    <div id="app" class="max-width">
-        <v-app id="inspire">
+    <div id="app" class="max-width dark" >
+        <v-app id="inspire" dark style="background: #131313;">
             <div>
                 <v-tabs
                     v-model="tab"
@@ -21,6 +21,7 @@
                         v-for="i in tabs"
                         :key="i"
                         :href="`#tab-${i}`"
+                        dark
                     >
                        Phase {{ i }}
                         <v-icon v-if="icons">mdi-trophy</v-icon>
@@ -30,10 +31,12 @@
                         v-for="i in tabs"
                         :key="i"
                         :value="'tab-' + i"
+                        dark
                     >
                         <v-card
                             flat
                             tile
+                            dark
                         >
 
 

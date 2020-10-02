@@ -2815,6 +2815,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Score",
   data: function data() {
@@ -2870,6 +2873,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -40451,15 +40457,21 @@ var render = function() {
               _c(
                 "v-list-item-content",
                 [
-                  _c("v-list-item-title", { staticClass: "headline mb-1" }, [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(Judge.name) +
-                        " " +
-                        _vm._s(Judge.last) +
-                        "\n                "
-                    )
-                  ]),
+                  _c(
+                    "v-list-item-title",
+                    { staticClass: "headline mb-1" },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(Judge.name) +
+                          " " +
+                          _vm._s(Judge.last) +
+                          " - "
+                      ),
+                      _c("v-chip", [_vm._v("Plateau " + _vm._s(Judge.spot_id))])
+                    ],
+                    1
+                  ),
                   _vm._v(" "),
                   _c("v-list-item-subtitle", [_vm._v(_vm._s(Judge.email))])
                 ],
@@ -40470,48 +40482,61 @@ var render = function() {
                 "v-list-item-action-text",
                 { attrs: { tile: "", size: "80", color: "grey" } },
                 [
-                  _c("div", { staticClass: "overline mb-4" }, [
-                    _vm._v(
-                      "\n                    Plateau " +
-                        _vm._s(Judge.spot_id) +
-                        "\n                "
-                    )
-                  ])
+                  _c(
+                    "div",
+                    { staticClass: "overline mb-4" },
+                    [
+                      _c(
+                        "v-card-actions",
+                        [
+                          _c(
+                            "v-btn",
+                            {
+                              staticClass: "mx-2",
+                              attrs: {
+                                fab: "",
+                                dark: "",
+                                small: "",
+                                color: "green"
+                              }
+                            },
+                            [
+                              _c("v-icon", { attrs: { dark: "" } }, [
+                                _vm._v(
+                                  "\n                                mdi-pencil\n                            "
+                                )
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              staticClass: "mx-2",
+                              attrs: {
+                                fab: "",
+                                dark: "",
+                                small: "",
+                                color: "danger"
+                              }
+                            },
+                            [
+                              _c("v-icon", { attrs: { dark: "" } }, [
+                                _vm._v(
+                                  "\n                                mdi-delete\n                            "
+                                )
+                              ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
                 ]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-card-actions",
-            [
-              _c(
-                "v-btn",
-                {
-                  staticClass: "mx-2",
-                  attrs: { fab: "", dark: "", small: "", color: "cyan" }
-                },
-                [
-                  _c("v-icon", { attrs: { dark: "" } }, [
-                    _vm._v("\n                    mdi-pencil\n                ")
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-btn",
-                {
-                  staticClass: "mx-2",
-                  attrs: { fab: "", dark: "", small: "", color: "pink" }
-                },
-                [
-                  _c("v-icon", { attrs: { dark: "" } }, [
-                    _vm._v("\n                    mdi-delete\n                ")
-                  ])
-                ],
-                1
               )
             ],
             1
@@ -40703,180 +40728,190 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "max-width", attrs: { id: "app" } },
+    { staticClass: "max-width dark", attrs: { id: "app" } },
     [
-      _c("v-app", { attrs: { id: "inspire" } }, [
-        _c(
-          "div",
-          [
-            _c(
-              "v-tabs",
-              {
-                staticClass: "elevation-2",
-                attrs: {
-                  "background-color": "dark accent-4",
-                  dark: "",
-                  centered: _vm.centered,
-                  grow: _vm.grow,
-                  vertical: _vm.vertical,
-                  right: _vm.right,
-                  "prev-icon": _vm.prevIcon
-                    ? "mdi-arrow-left-bold-box-outline"
-                    : undefined,
-                  "next-icon": _vm.nextIcon
-                    ? "mdi-arrow-right-bold-box-outline"
-                    : undefined,
-                  "icons-and-text": _vm.icons
-                },
-                model: {
-                  value: _vm.tab,
-                  callback: function($$v) {
-                    _vm.tab = $$v
+      _c(
+        "v-app",
+        {
+          staticStyle: { background: "#131313" },
+          attrs: { id: "inspire", dark: "" }
+        },
+        [
+          _c(
+            "div",
+            [
+              _c(
+                "v-tabs",
+                {
+                  staticClass: "elevation-2",
+                  attrs: {
+                    "background-color": "dark accent-4",
+                    dark: "",
+                    centered: _vm.centered,
+                    grow: _vm.grow,
+                    vertical: _vm.vertical,
+                    right: _vm.right,
+                    "prev-icon": _vm.prevIcon
+                      ? "mdi-arrow-left-bold-box-outline"
+                      : undefined,
+                    "next-icon": _vm.nextIcon
+                      ? "mdi-arrow-right-bold-box-outline"
+                      : undefined,
+                    "icons-and-text": _vm.icons
                   },
-                  expression: "tab"
-                }
-              },
-              [
-                _c("v-tabs-slider"),
-                _vm._v(" "),
-                _vm._l(_vm.tabs, function(i) {
-                  return _c(
-                    "v-tab",
-                    { key: i, attrs: { href: "#tab-" + i } },
-                    [
-                      _vm._v(
-                        "\n                   Phase " +
-                          _vm._s(i) +
-                          "\n                    "
-                      ),
-                      _vm.icons
-                        ? _c("v-icon", [_vm._v("mdi-trophy")])
-                        : _vm._e()
-                    ],
-                    1
-                  )
-                }),
-                _vm._v(" "),
-                _vm._l(_vm.tabs, function(i) {
-                  return _c(
-                    "v-tab-item",
-                    { key: i, attrs: { value: "tab-" + i } },
-                    [
-                      _c(
-                        "v-card",
-                        { attrs: { flat: "", tile: "" } },
-                        [
-                          _c(
-                            "v-list",
-                            { attrs: { "two-line": "" } },
-                            [
-                              _c(
-                                "v-list-item-group",
-                                {
-                                  attrs: {
-                                    multiple: "",
-                                    "active-class": "pink--text"
-                                  },
-                                  model: {
-                                    value: _vm.selected,
-                                    callback: function($$v) {
-                                      _vm.selected = $$v
+                  model: {
+                    value: _vm.tab,
+                    callback: function($$v) {
+                      _vm.tab = $$v
+                    },
+                    expression: "tab"
+                  }
+                },
+                [
+                  _c("v-tabs-slider"),
+                  _vm._v(" "),
+                  _vm._l(_vm.tabs, function(i) {
+                    return _c(
+                      "v-tab",
+                      { key: i, attrs: { href: "#tab-" + i, dark: "" } },
+                      [
+                        _vm._v(
+                          "\n                   Phase " +
+                            _vm._s(i) +
+                            "\n                    "
+                        ),
+                        _vm.icons
+                          ? _c("v-icon", [_vm._v("mdi-trophy")])
+                          : _vm._e()
+                      ],
+                      1
+                    )
+                  }),
+                  _vm._v(" "),
+                  _vm._l(_vm.tabs, function(i) {
+                    return _c(
+                      "v-tab-item",
+                      { key: i, attrs: { value: "tab-" + i, dark: "" } },
+                      [
+                        _c(
+                          "v-card",
+                          { attrs: { flat: "", tile: "", dark: "" } },
+                          [
+                            _c(
+                              "v-list",
+                              { attrs: { "two-line": "" } },
+                              [
+                                _c(
+                                  "v-list-item-group",
+                                  {
+                                    attrs: {
+                                      multiple: "",
+                                      "active-class": "pink--text"
                                     },
-                                    expression: "selected"
-                                  }
-                                },
-                                [
-                                  _vm._l(_vm.items, function(item, index) {
-                                    return [
-                                      _c("v-list-item", {
-                                        key: item.title,
-                                        scopedSlots: _vm._u(
-                                          [
-                                            {
-                                              key: "default",
-                                              fn: function(ref) {
-                                                var active = ref.active
-                                                var toggle = ref.toggle
-                                                return [
-                                                  _c(
-                                                    "v-list-item-content",
-                                                    [
-                                                      _c("v-list-item-title", {
-                                                        domProps: {
-                                                          textContent: _vm._s(
-                                                            item.title
-                                                          )
-                                                        }
-                                                      }),
-                                                      _vm._v(" "),
-                                                      _c(
-                                                        "v-list-item-subtitle",
-                                                        {
-                                                          staticClass:
-                                                            "text--primary",
-                                                          domProps: {
-                                                            textContent: _vm._s(
-                                                              item.headline
-                                                            )
+                                    model: {
+                                      value: _vm.selected,
+                                      callback: function($$v) {
+                                        _vm.selected = $$v
+                                      },
+                                      expression: "selected"
+                                    }
+                                  },
+                                  [
+                                    _vm._l(_vm.items, function(item, index) {
+                                      return [
+                                        _c("v-list-item", {
+                                          key: item.title,
+                                          scopedSlots: _vm._u(
+                                            [
+                                              {
+                                                key: "default",
+                                                fn: function(ref) {
+                                                  var active = ref.active
+                                                  var toggle = ref.toggle
+                                                  return [
+                                                    _c(
+                                                      "v-list-item-content",
+                                                      [
+                                                        _c(
+                                                          "v-list-item-title",
+                                                          {
+                                                            domProps: {
+                                                              textContent: _vm._s(
+                                                                item.title
+                                                              )
+                                                            }
                                                           }
-                                                        }
-                                                      ),
-                                                      _vm._v(" "),
-                                                      _c(
-                                                        "v-list-item-subtitle",
-                                                        {
-                                                          domProps: {
-                                                            textContent: _vm._s(
-                                                              item.subtitle
-                                                            )
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "v-list-item-subtitle",
+                                                          {
+                                                            staticClass:
+                                                              "text--primary",
+                                                            domProps: {
+                                                              textContent: _vm._s(
+                                                                item.headline
+                                                              )
+                                                            }
                                                           }
-                                                        }
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "v-list-item-subtitle",
+                                                          {
+                                                            domProps: {
+                                                              textContent: _vm._s(
+                                                                item.subtitle
+                                                              )
+                                                            }
+                                                          }
+                                                        )
+                                                      ],
+                                                      1
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c("v-list-item-action", [
+                                                      _vm._v(
+                                                        "\n                                                " +
+                                                          _vm._s(item.action) +
+                                                          "\n                                            "
                                                       )
-                                                    ],
-                                                    1
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c("v-list-item-action", [
-                                                    _vm._v(
-                                                      "\n                                                " +
-                                                        _vm._s(item.action) +
-                                                        "\n                                            "
-                                                    )
-                                                  ])
-                                                ]
+                                                    ])
+                                                  ]
+                                                }
                                               }
-                                            }
-                                          ],
-                                          null,
-                                          true
-                                        )
-                                      }),
-                                      _vm._v(" "),
-                                      index + 1 < _vm.items.length
-                                        ? _c("v-divider", { key: index })
-                                        : _vm._e()
-                                    ]
-                                  })
-                                ],
-                                2
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                })
-              ],
-              2
-            )
-          ],
-          1
-        )
-      ])
+                                            ],
+                                            null,
+                                            true
+                                          )
+                                        }),
+                                        _vm._v(" "),
+                                        index + 1 < _vm.items.length
+                                          ? _c("v-divider", { key: index })
+                                          : _vm._e()
+                                      ]
+                                    })
+                                  ],
+                                  2
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  })
+                ],
+                2
+              )
+            ],
+            1
+          )
+        ]
+      )
     ],
     1
   )
@@ -40917,13 +40952,17 @@ var render = function() {
               _c(
                 "v-list-item-content",
                 [
-                  _c("v-list-item-title", { staticClass: "headline mb-1" }, [
-                    _vm._v(
-                      "\n                " +
-                        _vm._s(Spot.name) +
-                        "\n            "
-                    )
-                  ]),
+                  _c(
+                    "v-list-item-title",
+                    { staticClass: "headline mb-1" },
+                    [
+                      _c("v-chip", { attrs: { color: "gray" } }, [
+                        _vm._v(_vm._s(Spot.id))
+                      ]),
+                      _vm._v(" " + _vm._s(Spot.name) + "\n            ")
+                    ],
+                    1
+                  ),
                   _vm._v(" "),
                   _c("v-list-item-subtitle", [_vm._v(_vm._s(Spot.address))])
                 ],
@@ -40931,46 +40970,61 @@ var render = function() {
               ),
               _vm._v(" "),
               _c("v-list-item-action-text", { attrs: { color: "green" } }, [
-                _c("div", { staticClass: "overline mb-4" }, [
-                  _vm._v(
-                    "\n                " + _vm._s(Spot.id) + "\n            "
-                  )
-                ])
+                _c(
+                  "div",
+                  { staticClass: "overline mb-4" },
+                  [
+                    _c(
+                      "v-card-actions",
+                      [
+                        _c(
+                          "v-btn",
+                          {
+                            staticClass: "mx-2",
+                            attrs: {
+                              fab: "",
+                              dark: "",
+                              small: "",
+                              color: "green"
+                            }
+                          },
+                          [
+                            _c("v-icon", { attrs: { dark: "" } }, [
+                              _vm._v(
+                                "\n                            mdi-pencil\n                        "
+                              )
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-btn",
+                          {
+                            staticClass: "mx-2",
+                            attrs: {
+                              fab: "",
+                              dark: "",
+                              small: "",
+                              color: "red"
+                            }
+                          },
+                          [
+                            _c("v-icon", { attrs: { dark: "" } }, [
+                              _vm._v(
+                                "\n                            mdi-delete\n                        "
+                              )
+                            ])
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
               ])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-card-actions",
-            [
-              _c(
-                "v-btn",
-                {
-                  staticClass: "mx-2",
-                  attrs: { fab: "", dark: "", small: "", color: "cyan" }
-                },
-                [
-                  _c("v-icon", { attrs: { dark: "" } }, [
-                    _vm._v("\n                mdi-pencil\n            ")
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-btn",
-                {
-                  staticClass: "mx-2",
-                  attrs: { fab: "", dark: "", small: "", color: "pink" }
-                },
-                [
-                  _c("v-icon", { attrs: { dark: "" } }, [
-                    _vm._v("\n                mdi-delete\n            ")
-                  ])
-                ],
-                1
-              )
             ],
             1
           )
@@ -41072,7 +41126,7 @@ var render = function() {
                                 fab: "",
                                 dark: "",
                                 small: "",
-                                color: "cyan"
+                                color: "green"
                               }
                             },
                             [_c("v-icon", [_vm._v("mdi-pencil")])],
@@ -41086,7 +41140,7 @@ var render = function() {
                                 fab: "",
                                 dark: "",
                                 small: "",
-                                color: "pink"
+                                color: "danger"
                               }
                             },
                             [_c("v-icon", [_vm._v("mdi-delete")])],

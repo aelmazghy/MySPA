@@ -22,7 +22,7 @@
             }
         </style>
     </head>
-    <body>
+    <body style="background-color: rgb(19 19 19);">
 
       <div id="app">
           <welcome></welcome>

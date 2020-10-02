@@ -17,6 +17,7 @@ class JudgesController extends Controller
     public function index()
     {
         return Judge::all();
+        return Spot::all();
     }
 
     /**
