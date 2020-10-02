@@ -2,14 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76844d5b-02ea-414f-872e-4af900a371c3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/components/jury/Voting.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/voting.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/JudgesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/JudgesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/Judges.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/Judges.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/AddJudges.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/AddJudges.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/AddSpot.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/AddSpot.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/AddTeam.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/AddTeam.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/admin/Score.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/Score.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/Spots.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/Spots.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/Teams.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin/Teams.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +185,7 @@
       <workItem from="1600980963040" duration="13655000" />
       <workItem from="1601043174009" duration="22000" />
       <workItem from="1601236322444" duration="30974000" />
-      <workItem from="1601449071556" duration="22374000" />
+      <workItem from="1601449071556" duration="29928000" />
     </task>
     <task id="LOCAL-00001" summary="Create Spots &amp; judges">
       <created>1601389596155</created>
@@ -220,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601560939837</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="WIP ADMIN">
+      <created>1601628903550</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1601628903550</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,10 +248,10 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="634" y="322" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1601456679851" />
-    <state x="473" y="135" key="CommitChangelistDialog2" timestamp="1601560939438">
+    <state x="473" y="135" key="CommitChangelistDialog2" timestamp="1601628903132">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="473" y="135" key="CommitChangelistDialog2/0.0.1792.1120@0.0.1792.1120" timestamp="1601560939438" />
+    <state x="473" y="135" key="CommitChangelistDialog2/0.0.1792.1120@0.0.1792.1120" timestamp="1601628903132" />
     <state x="769" y="464" key="Github.ShareDialog" timestamp="1601302353479">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
@@ -251,14 +260,14 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="641" y="272" key="Github.UntrackedFilesDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1601302380153" />
-    <state x="715" y="490" key="NewPhpFileDialog" timestamp="1601237878456">
+    <state x="715" y="490" key="NewPhpFileDialog" timestamp="1601647321340">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="715" y="490" key="NewPhpFileDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1601237878456" />
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1601560942326">
+    <state x="715" y="490" key="NewPhpFileDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1601647321340" />
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1601628907638">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1601560942326" />
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1601628907638" />
     <state x="200" y="200" width="1592" height="920" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1601455332155">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>

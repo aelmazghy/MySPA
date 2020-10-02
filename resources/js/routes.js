@@ -1,4 +1,5 @@
 import Login from "./components/admin/Login";
+// admin
 import Teams from "./components/admin/Teams";
 import Score from "./components/admin/Score";
 import Judges from "./components/admin/Judges";
@@ -10,6 +11,10 @@ import Dashboard from "./components/admin/Dashboard";
 import AddTeam from "./components/admin/AddTeam";
 import AddJudges from "./components/admin/AddJudges";
 import AddSpot from "./components/admin/AddSpot";
+
+// voting
+import Voting from "./components/jury/Voting"
+
 
 const routes = [
     {
@@ -35,6 +40,14 @@ const routes = [
             {path: 'ajouter-une-equipe', name: 'addteam', component: AddTeam},
             {path: 'ajouter-un-jurys', name: 'addjudges', component: AddJudges},
             {path: 'ajouter-un-plateaux', name: 'addspots', component: AddSpot},
+        ]
+    },
+    {
+      path: '/voting',
+      name: 'voting',
+      component: Voting,
+        children: [
+            /* {path: 'phase', name: 'score', component: Score},*/
         ]
     },
 ]

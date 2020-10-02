@@ -23,6 +23,7 @@ Vue.component('welcome', require('./components/Welcome.vue').default);
 const app = new Vue({
     el: '#app',
     vuetify: new Vuetify(),
+    theme: { dark: true },
     router,
     components:{
         MainApp

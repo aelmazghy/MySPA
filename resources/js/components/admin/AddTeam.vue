@@ -1,4 +1,8 @@
 <template>
+<div>
+    <v-snackbar v-model="show" :top="top" color="green" :timeout="timeout">
+        {{message}}
+    </v-snackbar>
     <v-card width="100%" dark>
 
         <v-card-title>
@@ -9,18 +13,26 @@
             Ajouter une équipe
         </v-card-title>
 
-        <v-form @submit.prevent="addTeam()">
+        <v-form @submit.prevent="addTeam()" v-model="valid">
             <v-card-text>
 
-                <v-text-field prepend-icon="mdi-account" name="name" label="Nom" type="text" color="#e91f62" v-model="fields.name"></v-text-field>
-                <span v-if="errors && errors.name" class="invalid-feedback" role="alert">
-                                        <strong>{{ errors.name[0] }}</strong>
-                                    </span>
-                <v-text-field id="last" prepend-icon="mdi-tooltip-account" name="last" label="Prénom" type="text" color="#e91f62" v-model="fields.last"></v-text-field>
-                <span v-if="errors && errors.last" class="invalid-feedback" role="alert">
-                                        <strong>{{ errors.last[0] }}</strong>
-                                    </span>
-
+                <v-text-field
+                    prepend-icon="mdi-account"
+                    name="name"
+                    label="Nom"
+                    type="text"
+                    color="#e91f62"
+                    v-model="fields.name"
+                    :rules="nameRules"
+                    required></v-text-field>
+                <v-text-field
+                    id="last"
+                    prepend-icon="mdi-tooltip-account"
+                    name="last"
+                    label="Prénom"
+                    type="text"
+                    color="#e91f62"
+                    v-model="fields.last"></v-text-field>
                 <v-select
                     v-model="fields.spot_id"
                     :items="Spots"
@@ -32,24 +44,28 @@
                     type="text"
                     color="#e91f62"
                     label="Plateau"
+                    :rules="spotRules"
+                    required
                 ></v-select>
-                <span v-if="errors && errors.spot_id" class="invalid-feedback" role="alert">
-                                        <strong>{{ errors.spot_id[0] }}</strong>
-                                    </span>
-                <v-text-field id="project" prepend-icon="mdi-briefcase" name="project" label="Projet" type="text" color="#e91f62" v-model="fields.project"></v-text-field>
-                <span v-if="errors && errors.project" class="invalid-feedback" role="alert">
-                                        <strong>{{ errors.project[0] }}</strong>
-                                    </span>
-
-
+                <v-text-field
+                    id="project"
+                    prepend-icon="mdi-briefcase"
+                    name="project"
+                    label="Projet"
+                    type="text"
+                    color="#e91f62"
+                    v-model="fields.project"
+                    :rules="projectRules"
+                    required></v-text-field>
             </v-card-text>
             <v-card-actions style="padding:20px;">
                 <v-spacer></v-spacer>
-                <v-btn color="#e91f62" type="submit" dark x-large>créer</v-btn>
+                <v-btn color="#e91f62" type="submit" dark x-large :disabled="!valid">créer</v-btn>
 
             </v-card-actions>
         </v-form>
     </v-card>
+</div>
 </template>
 
 <script>
@@ -57,9 +73,28 @@ export default {
 name: "AddTeam",
     data() {
         return {
+            valid: true,
+
             fields: {},
             errors: {},
-            Spots: []
+            Spots: [],
+
+            // Rules
+            nameRules: [
+                v => !!v || 'Le nom est obligatoire',
+            ],
+            spotRules: [
+                v => !!v || 'Ce champ est obligatoire',
+            ],
+            projectRules: [
+                v => !!v || 'Ce champ est obligatoire',
+            ],
+
+            // toast
+            show: false,
+            top: true,
+            message: "L\'équipe à été ajoutée",
+            timeout: 3000,
         }
     },
     created() {
@@ -72,8 +107,10 @@ name: "AddTeam",
         addTeam() {
             //alert("add");
             axios.post('/api/team', this.fields);
-            alert('Message sent!');
-
+            //alert(' ok');
+            this.show = true;
+            //reload page after add new spot
+            setTimeout( () => window.location.reload(), 3100);
         },
     },
 }
